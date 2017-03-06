@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300,500,700');
+
+html {
+	font-size: 10px;
+}
+
+body {
+	margin: 0;
+	font-family: 'Source Code Pro', monospace;
+}
+
+
+.o-modal--test {
+	display: block;
+	padding: 20px;
+	width: 50%;
+	position: absolute;
+	transform: translate(50%, 50%);
+
+	&.o-modal--hidden {
+		display: none;
+	}
+}
