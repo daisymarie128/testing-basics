@@ -61,21 +61,21 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-								'name': 'chrome',
-								'os': 'OS X',
-						  'os_version': 'El Capitan',
-						  'browser': 'Chrome',
-						  'browser_version': '56.0',
-						  'resolution': '1024x768',
-								'browserstack.debug': 'ture'
-    },{
-							'name': 'safari',
-					  'os': 'OS X',
-					  'os_version': 'Yosemite',
-					  'browser': 'Safari',
-					  'browser_version': '8.0',
-					  'resolution': '1024x768',
+							'name': 'chrome',
+							'os': 'OS X',
+							'os_version': 'El Capitan',
+							'browser': 'Chrome',
+							'browser_version': '56.0',
+							'resolution': '1024x768',
 							'browserstack.debug': 'ture'
+    },{
+						'name': 'safari',
+						'os': 'OS X',
+						'os_version': 'Yosemite',
+						'browser': 'Safari',
+						'browser_version': '8.0',
+						'resolution': '1024x768',
+						'browserstack.debug': 'ture'
 				}],
     //
     // ===================
