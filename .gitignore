@@ -4,3 +4,4 @@ npm-debug.log
 .eslintcache
 errorShots/
 .env
+local.log
