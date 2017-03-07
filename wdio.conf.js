@@ -1,4 +1,23 @@
+var browserstack = require('browserstack-local');
+require('dotenv').config()
+
 exports.config = {
+
+    //
+    // =================
+    // Service Providers
+    // =================
+    // WebdriverIO supports Sauce Labs, Browserstack, and Testing Bot (other cloud providers
+    // should work too though). These services define specific user and key (or access key)
+    // values you need to put in here in order to connect to these services.
+    //
+				host: '0.0.0.0',
+    port: 4444,
+    path: '/wd/hub',
+    user: process.env.BROWSER_STACK_USERNAME,
+    key: process.env.BROWSER_STACK_KEY,
+				browserstackLocal: true,
+
 
     //
     // ==================
@@ -42,10 +61,22 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome'
-    }],
+								'name': 'chrome',
+								'os': 'OS X',
+						  'os_version': 'El Capitan',
+						  'browser': 'Chrome',
+						  'browser_version': '56.0',
+						  'resolution': '1024x768',
+								'browserstack.debug': 'ture'
+    },{
+							'name': 'safari',
+					  'os': 'OS X',
+					  'os_version': 'Yosemite',
+					  'browser': 'Safari',
+					  'browser_version': '8.0',
+					  'resolution': '1024x768',
+							'browserstack.debug': 'ture'
+				}],
     //
     // ===================
     // Test Configurations
@@ -58,7 +89,7 @@ exports.config = {
     sync: true,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
-    logLevel: 'result',
+    logLevel: 'silent',
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -106,7 +137,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone','webpack'],
+    services: ['browserstack','selenium-standalone','webpack'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -119,7 +150,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporters: ['dot'],
+    reporters: ['spec'],
 
     //
     // Options to be passed to Jasmine.
@@ -146,8 +177,19 @@ exports.config = {
     // resolved to continue.
     //
     // Gets executed once before all workers get launched.
-    // onPrepare: function (config, capabilities) {
-    // },
+				// Code to start browserstack local before start of test
+		  // onPrepare: function (config, capabilities) {
+		  //   console.log("Connecting local");
+		  //   return new Promise(function(resolve, reject){
+		  //     exports.bs_local = new browserstack.Local();
+		  //     exports.bs_local.start({'key': exports.config.key }, function(error) {
+		  //       if (error) return reject(error);
+		  //       console.log('Connected. Now testing...');
+				//
+		  //       resolve();
+		  //     });
+		  //   });
+		  // },
     //
     // Gets executed just before initialising the webdriver session and test framework. It allows you
     // to manipulate configurations depending on the capability or spec.
@@ -156,8 +198,7 @@ exports.config = {
     //
     // Gets executed before test execution begins. At this point you can access all global
     // variables, such as `browser`. It is the perfect place to define custom commands.
-    // before: function() {
-    //  require('./node_modules/babel-register');
+    // before: function (capabilities, specs) {
     // },
     //
     // Hook that gets executed before the suite starts
@@ -205,6 +246,8 @@ exports.config = {
     //
     // Gets executed after all workers got shut down and the process is about to exit. It is not
     // possible to defer the end of the process using a promise.
-    // onComplete: function(exitCode) {
-    // }
+				// Code to stop browserstack local after end of test
+		  // onComplete: function (capabilties, specs) {
+		  //   exports.bs_local.stop(function() {});
+		  // }
 }
