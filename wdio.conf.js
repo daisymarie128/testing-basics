@@ -1,4 +1,4 @@
-var browserstack = require('browserstack-local');
+// var browserstack = require('browserstack-local');
 require('dotenv').config()
 
 exports.config = {
@@ -7,17 +7,14 @@ exports.config = {
     // =================
     // Service Providers
     // =================
-    // WebdriverIO supports Sauce Labs, Browserstack, and Testing Bot (other cloud providers
-    // should work too though). These services define specific user and key (or access key)
-    // values you need to put in here in order to connect to these services.
-    //
+
+    // server configurations
 				host: '0.0.0.0',
     port: 4444,
     path: '/wd/hub',
     user: process.env.BROWSER_STACK_USERNAME,
     key: process.env.BROWSER_STACK_KEY,
 				browserstackLocal: true,
-
 
     //
     // ==================
@@ -29,11 +26,11 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+     './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+     // 'path/to/excluded/files'
     ],
     //
     // ============
@@ -58,24 +55,26 @@ exports.config = {
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-							'name': 'chrome',
-							'os': 'OS X',
-							'os_version': 'El Capitan',
-							'browser': 'Chrome',
-							'browser_version': '56.0',
-							'resolution': '1024x768',
-							'browserstack.debug': 'ture'
+					 browserName: 'chrome'
+				}, {
+	     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+	     // grid with only 5 firefox instances available you can make sure that not more than
+	     // 5 instances get started at a time.
+					'name': 'chrome',
+					'os': 'OS X',
+					'os_version': 'El Capitan',
+					'browser': 'Chrome',
+					'browser_version': '56.0',
+					'resolution': '1024x768',
+					'browserstack.debug': 'ture'
     },{
-						'name': 'safari',
-						'os': 'OS X',
-						'os_version': 'Yosemite',
-						'browser': 'Safari',
-						'browser_version': '8.0',
-						'resolution': '1024x768',
-						'browserstack.debug': 'ture'
+					'name': 'safari',
+					'os': 'OS X',
+					'os_version': 'Yosemite',
+					'browser': 'Safari',
+					'browser_version': '8.0',
+					'resolution': '1024x768',
+					'browserstack.debug': 'ture'
 				}],
     //
     // ===================
@@ -155,16 +154,16 @@ exports.config = {
     //
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {
-        //
-        // Jasmine default timeout
-        defaultTimeoutInterval: 10000,
-        //
-        // The Jasmine framework allows interception of each assertion in order to log the state of the application
-        // or website depending on the result. For example, it is pretty handy to take a screenshot every time
-        // an assertion fails.
-        expectationResultHandler: function(passed, assertion) {
-            // do something
-        }
+     //
+     // Jasmine default timeout
+     defaultTimeoutInterval: 10000,
+     //
+     // The Jasmine framework allows interception of each assertion in order to log the state of the application
+     // or website depending on the result. For example, it is pretty handy to take a screenshot every time
+     // an assertion fails.
+     expectationResultHandler: function(passed, assertion) {
+         // do something
+     }
     },
 
     //
