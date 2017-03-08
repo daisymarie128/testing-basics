@@ -5,3 +5,6 @@ npm-debug.log
 errorShots/
 .env
 local.log
+dist/
+chromedriver
+geckodriver
