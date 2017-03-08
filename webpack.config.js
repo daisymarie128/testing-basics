@@ -16,10 +16,17 @@ module.exports = {
  },
 	module: {
     rules: [
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      }
+					{
+						test: /\.js$/,
+						exclude: /node_modules/,
+						loader: 'babel-loader'
+					}, {
+						test: /\.scss$/,
+						use: ['style-loader', 'css-loader', 'sass-loader']
+					}, {
+						test: /\.jpe?g$|\.gif$|\.png$/i,
+						loader: 'file-loader?regExp=(image.*)&name=[1]'
+					}
     ]
   },
 	plugins: [
