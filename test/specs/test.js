@@ -1,7 +1,7 @@
 var assert = require('assert');
 
-describe('test button', function() {
-	it('should replace text with working', function () {
+describe('test button',  () => {
+	it('should replace text with working', () => {
   browser.url('http://bs-local.com:8080/');
 		const myButton = $('.o-btn--test')
   browser.click('.o-btn--test');
@@ -10,8 +10,8 @@ describe('test button', function() {
 	})
 });
 
-describe('test modal opens', function() {
-	it('clicking button should open modal', function () {
+describe('test modal opens',  () => {
+	it('clicking button should open modal', () => {
   browser.url('http://bs-local.com:8080/');
 		const modal = $('.o-modal--test')
 		const openBtn = browser.getText('.o-btn--open');
@@ -21,8 +21,8 @@ describe('test modal opens', function() {
 	})
 });
 
-describe('test modal closes', function() {
-	it('clicking button should close modal', function () {
+describe('test modal closes',  () => {
+	it('clicking button should close modal', () => {
   browser.url('http://bs-local.com:8080/');
 
 		const modal = $('.o-modal--test')
